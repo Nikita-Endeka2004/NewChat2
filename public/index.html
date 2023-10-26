@@ -25,7 +25,7 @@
 
     <div class="row">
         <div class="d-flex gap-3 my-3">
-          <input type="text" class="flex-grow-1 p-1 fs-3" placeholder="Type message here" v-model="textMessage" @keypress.enter="addMessege">
+          <input type="text" class="flex-grow-1 p-1 fs-3" placeholder="Type message here" v-model="textMessage" @keypress.enter="addMessege" maxlength="450">
           <button class="btn btn-success fs-3 px-5" :disabled="(!textMessage.trim() || buttonDisabled)" @click="addMessege">Отправить</button>
         </div>
     </div>
@@ -33,7 +33,7 @@
     <hr class="md-5">
 
     <div v-for="item in list" :class="{'bg-info bg-opacity-10 border border-info rounded': item.name === userName}" class="row align-items-center border-bottom pd-2 fs-4">
-      <div class="col-2 fw-bold text-end">{{item.name}}</div>
+      <div class="col-2 fw-bold">{{item.name}}</div>
       <div class="col-7">{{item.title}}</div>
       <div class="col-3 text-end">{{item.time}}</div>
     </div>

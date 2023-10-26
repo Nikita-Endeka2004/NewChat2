@@ -3,13 +3,12 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebas
 import * as firebase from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCgpL9uF1tLJv286fl-LY-mzhCAYNHFELs",
-  authDomain: "newdata2-95d0d.firebaseapp.com",
-  databaseURL: "https://newda-95d0d-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "newdata2-95d0d",
-  storageBucket: "newdata2-95d0d.appspot.com",
-  messagingSenderId: "856125607929",
-  appId: "1:856125607929:web:a27217ac3fe609393c7728"
+  apiKey: "AIzaSyDRICVtLdHOXwFr-hU3-7Tfu0aQLeJjmEU",
+  authDomain: "newdata-e5098.firebaseapp.com",
+  projectId: "newdata-e5098",
+  storageBucket: "newdata-e5098.appspot.com",
+  messagingSenderId: "661028746123",
+  appId: "1:661028746123:web:94b39815cb0fb24992758e"
 };
 const app = initializeApp(firebaseConfig);
 const db = firebase.getFirestore(app);
@@ -41,6 +40,12 @@ createApp({
       if(!text){
         return;
       }
+      let words = text.split(' ');
+      let truncatedWords = words.map(word => {
+        return word.length > 35 ? word.substring(0, 35) : word;
+      });
+      
+      text = truncatedWords.join(' ');
       let time = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
       time = time.split(' ')[1] + ' (' + time.split(' ')[0].split('/').reverse().join('/') + ')';
       let newMessage = {
